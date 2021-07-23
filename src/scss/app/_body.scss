@@ -3,6 +3,7 @@ body {
 	width: 100%;
 	font-family: $font-family-spectral;
     position: relative;
+	background-color: $black;
 
 	* {
 		outline: none !important;
@@ -13,7 +14,8 @@ body {
     }
 
 	// @import '../components/custom-margin';
-	// @import '../components/custom-max-width';
+	@import '../imports/custom_max_width';
+	@import '../imports/neon';
 	// @import '../components/custom-width';
 
 	a:hover,
@@ -24,32 +26,21 @@ body {
 		text-decoration: none;
 	}
 
-	.bg {
-		background-size: cover;
-		background-repeat: no-repeat;
-		background-position: center;
-		width: 100%;
+	.bg-black {
+		background-color: $black;
+	}
 
-		img {
-			width: 100%;
-			height: auto;
-			visibility: hidden;
+	.titulos {
+		font-style: italic;
+		font-weight: 500;
+
+		@media screen and (min-width: 992px){
+			font-size: 35px;
 		}
-
-		&.bg-size-contain {
-			background-size: contain;
+		@media screen and (min-width: 1200px){
+			font-size: 45px;
 		}
+	}
 
-		&.bg-size-auto {
-			background-size: auto;
-		}
-
-		&.bg-size-cover {
-			background-size: cover;
-        }
-
-        &.bg-position-bottom {
-            background-position: center bottom;
-        }
-    }
+	@import '../imports/custom_bg';
 }

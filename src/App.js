@@ -1,21 +1,32 @@
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import {Suspense, lazy} from 'react';
 
 import Header from './web/components/Header';
-import Home from './web/Home';
+import Footer from './web/components/Footer';
+
+const Home = lazy(() => {
+	return Promise.all([
+		import("./web/Home"),
+		new Promise(resolve => setTimeout(resolve, 300))
+	])
+	.then(([moduleExports]) => moduleExports);
+});
 
 function App() {
 	return (
 		<Router>
 			<div>
-				<Header />
 
 				<Switch>
 					<Route path="/" exact >
-						<Home />
+						<Suspense fallback={<h2 className="text-center" style={{color: 'white'}}>Cargando ...</h2>}>
+							<Header />
+							<Home />
+							<Footer />
+						</Suspense>
 					</Route>
 				</Switch>
 
-				{/* Aqui va el Footer */}
 			</div>
 		</Router>
 	);

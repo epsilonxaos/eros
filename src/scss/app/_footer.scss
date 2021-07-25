@@ -1,0 +1,14 @@
+footer {
+    background-color: $black;
+    padding: 10px 0;
+
+    color: $white;
+
+    p {
+        font-weight: 200;
+    }
+
+    img {
+        filter: invert(1);
+    }
+}
